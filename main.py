@@ -21,8 +21,10 @@ def main() -> None:
     print(f"Response from ChatOpenAI: {response_openai}")
 
     llm_anthropic = ChatAnthropic(
-        model="claude-sonnet-4-5-20250929",
-        temperature=0
+        model_name="claude-sonnet-4-5-20250929",
+        temperature=0,
+        timeout=10_000,
+        stop=[] 
     )
     response_anthropic = llm_anthropic.invoke("Say 'setup complete!' in one word")
     print(f"Response from ChatAnthropic: {response_anthropic}")

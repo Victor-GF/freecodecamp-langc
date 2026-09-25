@@ -5,16 +5,19 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "chromadb>=1.5.9",
     "langchain>=1.4.2",
     "langchain-anthropic>=1.7.4",
+    "langchain-community>=0.4.2",
     "langchain-core>=1.6.4",
     "langchain-openai>=1.6.5",
     "langgraph>=1.2.12",
+    "pypdf>=6.19.0",
     "python-dotenv>=1.2.3",
 ]
 
-[project.scripts]
-langc-course = "langc_course:main"
+[tool.uv]
+package = false
 
 [build-system]
 requires = ["uv_build>=0.12.10,<0.13.0"]
