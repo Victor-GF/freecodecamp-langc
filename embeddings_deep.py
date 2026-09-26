@@ -29,15 +29,21 @@ def batch_embeddings():
 
 def similarity_search():
     docs = [
-        "Python is a programming language",
-        "Javascript is used for web development",
-        "Machine Learning enables AI applications",
-        "Deep learning uses neural networks",
-        "Cats are popular pets",
+        # 1. Documento Técnico (A resposta CERTA, mas escrita em jargão de baixo nível)
+        "The platform input layer captures WM_KEYDOWN and WM_KEYUP messages within the Win32 PeekMessage loop to update the system state.",
+        
+        # 2. Documento Distrator (Resposta ERRADA, mas usa linguagem coloquial genérica)
+        "When a gamer wants to play, they must press a button on their mechanical keyboard.",
+        
+        # 3. Outro contexto (Nível mais alto)
+        "In GDScript, you can easily connect a UI button signal to detect when it is pressed by the user.",
+        
+        # 4. Totalmente irrelevante
+        "Machine Learning enables AI applications."
     ]
 
-    query = "What programming languages exist?"
-
+    query = "how do I make the engine recognize when I press a button on my keyboard?"
+    
     doc_vector = embeddings.embed_documents(docs)
     query_vector = embeddings.embed_query(query)
 
