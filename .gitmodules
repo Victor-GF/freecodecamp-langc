@@ -1,0 +1,6 @@
+[submodule "repository/fcc-production-rag-part-6"]
+	path = repository/fcc-production-rag-part-6
+	url = https://github.com/pdichone/fcc-production-rag-part-6.git
+[submodule "repository/production-course-main-code"]
+	path = repository/production-course-main-code
+	url = https://github.com/pdichone/production-course-main-code.git
