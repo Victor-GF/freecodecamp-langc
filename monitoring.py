@@ -76,6 +76,7 @@ class MetricsCollector:
         else:
             self.metrics["cache_misses"] += 1
 
+
     def get_summary(self) -> dict:
         avg_latency = (
             self.metrics["latency_sum"] / self.metrics["latency_count"]
