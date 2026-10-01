@@ -18,18 +18,21 @@ class AgentState(TypedDict):
 
 class ProductionAgent:
     def __init__(self):
-        self.settings = get_settings()
+        settings = get_settings()
+
         self.primary_llm = ChatOpenAI(
             model=settings.primary_model,
             temperature=0.0,
             timeout=30,
             max_retries=0,
+            api_key=settings.openai_api_key
         )
         self.fallback_llm = ChatOpenAI(
             model=settings.fallback_model,
             temperature=0.0,
             timeout=30,
             max_retries=0,
+            api_key=settings.openai_api_key
         )
         self.max_retries = settings.max_retries
         self.graph = self._build_graph()
@@ -111,3 +114,19 @@ class ProductionAgent:
         graph.add_edge("error", END)
 
         return graph.compile()
+
+
+    @traceable(name="production_agent_invoke")
+    def invoke(self, message: str) -> dict:
+        result = self.graph.invoke({
+            "messages": [HumanMessage(content=message)],
+            "error": None,
+            "retry_count": 0,
+            "model_used": ""
+        })
+
+        return {
+            "response": result["messages"][-1].content,
+            "model_used": result.get("model_used", "unknown"),
+            "error": result.get("error"),
+        }

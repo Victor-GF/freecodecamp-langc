@@ -3,7 +3,7 @@ from functools import lru_cache
 
 class Settings(BaseSettings):
     # LLM
-    openai_api_key: str
+    openai_api_key: str = ""
     primary_model: str = "gpt-4o-mini"
     fallback_model: str = "gpt-4o-mini"
 
