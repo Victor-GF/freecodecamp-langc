@@ -23,6 +23,8 @@ class ChatResponse(BaseModel):
     timestamp: str = Field(
         default_factory=lambda: datetime.now(timezone.utc).isoformat()
     )
+    security_notes: list[str] = None
+
 
 class HealthResponse(BaseModel):
     status: str = "healthy"
